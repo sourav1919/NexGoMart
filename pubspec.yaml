@@ -39,6 +39,7 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   dio: ^5.8.0+1
   carousel_slider: ^5.0.0
+  equatable: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter:
     - assets/banner1.jpg
     - assets/banner2.jpg
     - assets/banner3.jpg
+    - assets/banner4.jpg
     - assets/placeholder.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
