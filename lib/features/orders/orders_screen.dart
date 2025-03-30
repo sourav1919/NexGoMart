@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({super.key});
@@ -20,7 +21,7 @@ class OrdersScreen extends StatelessWidget {
               child: ListView.builder(
                 itemCount: 3,
                 itemBuilder: (context, index) {
-                  return _buildOrderItem(index + 1, "Order #00$index", "₹${(index + 1) * 250}", index == 1 ? "Processing" : "Delivered", context);
+                  return _buildOrderItem(context, index + 1, "Order #00$index", "₹${(index + 1) * 250}", index == 1 ? "Processing" : "Delivered");
                 },
               ),
             ),
@@ -30,7 +31,7 @@ class OrdersScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildOrderItem(int orderNumber, String orderId, String price, String status, BuildContext context) {
+  Widget _buildOrderItem(BuildContext context, int orderNumber, String orderId, String price, String status) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       elevation: 5,
@@ -86,7 +87,9 @@ class OrdersScreen extends StatelessWidget {
                   child: Text("Reorder", style: TextStyle(fontSize: 14, color: Colors.green.shade700)),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push('/order-details', extra: {'orderId': orderId, 'price': price, 'status': status});
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green.shade700,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
